@@ -23,9 +23,28 @@ async function getBy (id){
     return !result ? null : result.dataValues 
 }
 
+async function getAll (){
+    console.log("get all data")
+    const result = await Users.findAll({
+        include : [{
+            model  : Roles,
+            as : "roles",
+            through : {
+                model : userRole,
+                as : "userRoles"
+            }
+        }]
+    })
+    console.log(result)
+    return result.map((value)=>value.dataValues) 
+}
+
+
+
 
 
 module.exports = {
     update,
-    getBy
+    getBy,
+    getAll
 }

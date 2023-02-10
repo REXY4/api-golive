@@ -42,6 +42,9 @@ module.exports = {
       email: {
         type: Sequelize.STRING
       },
+      status: {
+        type: Sequelize.STRING
+      },
       noTelp: {
         type: Sequelize.STRING
       },

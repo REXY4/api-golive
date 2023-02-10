@@ -4,6 +4,7 @@ const { Users, Roles, userRole } = require("../../models");
  async function create (data){
     const result = await Users.create({
         ...data,
+        status : "active",
         attributes : {
             exclude : ["id","password"]
         }
@@ -23,7 +24,7 @@ const { Users, Roles, userRole } = require("../../models");
 }
 
 async function getBy (email){
-    const getRole = await Roles.findAll();
+    console.log("ini ligin",email)
     const result = await Users.findOne({
         where : {email : email},
         include : [{
@@ -35,6 +36,8 @@ async function getBy (email){
             }
         }]
     })
+    const roles = await Roles.findAll();
+    console.log(roles)
     return !result ? null : result.dataValues 
 }
 

@@ -3,5 +3,6 @@ module.exports = {
     validation  : require("./validation"),
     checkUsers : require("./checkUsers"),
     generateToken :require("./generateToken"),
-    validPassword : require("./validPassword")
+    validPassword : require("./validPassword"),
+    privateInternal : require("./privateInternal")
 }

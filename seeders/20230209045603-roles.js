@@ -17,7 +17,7 @@ const createdAt = new Date(timestamp * 1000);
       },
       {
         name: 'user',
-        isInternal: true,
+        isInternal: false,
         createdAt,
         updatedAt : createdAt
       },
@@ -34,12 +34,13 @@ const createdAt = new Date(timestamp * 1000);
         {
           name: 'admin',
           isInternal: true,
+         
           createdAt,
           updatedAt : createdAt
         },
         {
           name: 'user',
-          isInternal: true,
+          isInternal: false,
           createdAt,
           updatedAt : createdAt 
         },

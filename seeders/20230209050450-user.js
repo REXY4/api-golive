@@ -18,6 +18,7 @@ module.exports = {
         name: 'Admin',
         email: "admin@gmail.com",
         password : passwordHash,
+        status: "active",
         createdAt,
         updatedAt : createdAt
       },
@@ -25,6 +26,7 @@ module.exports = {
         name: 'Jhon Doe',
         email: "rizki@gmail.com",
         password : passwordHash,
+        status: "active",
         createdAt,
         updatedAt : createdAt
       },
@@ -46,6 +48,7 @@ module.exports = {
         name: 'Admin',
         email: "admin@gmail.com",
         password : passwordHash,
+        status: "active",
         createdAt,
         updatedAt : createdAt
       },
@@ -53,6 +56,7 @@ module.exports = {
         name: 'Jhon Doe',
         email: "rizki@gmail.com",
         password : passwordHash,
+        status: "active",
         createdAt,
         updatedAt : createdAt
       }

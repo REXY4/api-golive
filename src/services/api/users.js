@@ -11,9 +11,15 @@ const getBy = async (id)=>{
     return result
 }
 
+const getAll = async ()=>{
+    const result = await users.getAll();
+    return result
+}
+
 
 
 module.exports = {
     update,
-    getBy
+    getBy,
+    getAll
 }

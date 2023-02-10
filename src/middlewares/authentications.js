@@ -15,6 +15,7 @@ module.exports = (req, res, next) => {
     const verified =  jwt.verify(token, secretKey);
     req.email = verified.user.email;
     req.id = verified.user.id;
+    req.role = verified.user.roles[0].name
     console.log(verified)
     next();
   } catch (error) {

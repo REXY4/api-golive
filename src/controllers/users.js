@@ -2,8 +2,8 @@ const { api } = require("../services")
 
 const update = async (req, res)=>{
     try {
-        const findUsers = await api.users.getBy(req.id);
-        console.log("nama users", findUsers)
+        const id = req.id;
+        const findUsers = await api.users.getBy(id);
         if(!findUsers){
           return  res.status(401).send({
                 statusCode : 401,
@@ -11,8 +11,7 @@ const update = async (req, res)=>{
                 message : "users not found"
             })
         }
-        const  {posision,name,ktp,placeAndBrith,gender,religion,status,idCardAddress,address,noTelp} = req.body;
-        const result = await api.users.update({posision,name,ktp,placeAndBrith,gender,religion,status,idCardAddress,address,noTelp}, req.id); 
+        const result = await api.users.update(req.body, id); 
         res.send({
             statusCode :200,
             message  :"update profile success",
@@ -27,9 +26,35 @@ const update = async (req, res)=>{
     }
 }
 
-const getBy = async () =>{
+const updateStatus = async (req, res)=>{
     try {
-        const findUsers = await api.users.getBy(req.id);
+        const id = req.params.id;
+        const findUsers = await api.users.getBy(id);
+        if(!findUsers){
+          return  res.status(401).send({
+                statusCode : 401,
+                status : "failed",
+                message : "users not found"
+            })
+        }
+        const result = await api.users.update(req.body, id); 
+        res.send({
+            statusCode :200,
+            message  :"update profile success",
+            data : result
+        })
+    } catch (error) {
+        res.status(500).send({
+            statusCode : 500,
+            status : "error",
+            message : error.message
+        })
+    }
+}
+
+const getBy = async (req, res) =>{
+    try {
+        const findUsers = await api.users.getBy(req.params.id);
         if(!findUsers){
             return res.status(401).send({
                 statusCode : 401,
@@ -52,8 +77,35 @@ const getBy = async () =>{
     }
 }
 
+const getAll = async (req, res) =>{
+    try {
+        const findUsers = await api.users.getAll();
+        if(!findUsers){
+            return res.status(401).send({
+                statusCode : 401,
+                status : "failed",
+                message : "Users not found!"
+            })
+        } 
+        res.send({
+            statusCode: 200,
+            status: "success",
+            message:"Get All Users Sucess",
+            data : findUsers
+        })
+    } catch (error) {
+        res.status(500).send({
+            statusCode : 500,
+            status : "error",
+            message : error.message
+        })
+    }
+}
+
 
 module.exports = {
     update,
-    getBy
+    getBy,
+    getAll,
+    updateStatus
 }
