@@ -1,0 +1,2 @@
+- Run `npm run sql:migrate` to build sql tables
+- Run `npm run sql:seed:all` to add basic data
